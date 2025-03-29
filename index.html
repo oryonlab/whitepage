@@ -246,7 +246,7 @@
             <div class="max-w-md mx-auto p-8 rounded-lg shadow-xl text-center" style="background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1);">
                 <h2 class="text-2xl font-bold mb-6 text-center">Ready to Transform Your Life?</h2>
                 <p class="text-gray-300 mb-6">Take the first step toward a healthier, more energetic you. Contact us today to learn how the 48 Hours Method can work for your specific needs.</p>
-                <a href="#" id="contact-button" class="cta-button inline-block">Contact Us Now</a>
+                <a href="mailto:contact@example.com" id="contact-button" class="cta-button inline-block">Contact Us Now</a>
                 <p class="disclaimer mt-4">We typically respond to all inquiries within 24 hours.</p>
             </div>
 
@@ -298,12 +298,27 @@
             // Get the current domain
             const currentDomain = window.location.hostname;
             
-            // Set up the contact button
+            // Default to example.com for local testing
+            const domain = currentDomain === 'localhost' || currentDomain === '127.0.0.1' ? 'example.com' : currentDomain;
+            
+            // Set up the contact button with the correct email
             const contactButton = document.getElementById('contact-button');
-            contactButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                const emailAddress = 'contact@' + currentDomain;
-                window.location.href = 'mailto:' + emailAddress;
+            const emailAddress = 'contact@' + domain;
+            
+            // Update both the href and display a tooltip with the email
+            contactButton.href = 'mailto:' + emailAddress;
+            contactButton.title = emailAddress;
+            
+            // Add email display on hover (optional)
+            contactButton.addEventListener('mouseover', function() {
+                this.dataset.originalText = this.textContent;
+                this.textContent = emailAddress;
+            });
+            
+            contactButton.addEventListener('mouseout', function() {
+                if (this.dataset.originalText) {
+                    this.textContent = this.dataset.originalText;
+                }
             });
         });
     </script>
