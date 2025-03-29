@@ -305,21 +305,11 @@
             const contactButton = document.getElementById('contact-button');
             const emailAddress = 'contact@' + domain;
             
-            // Update both the href and display a tooltip with the email
+            // Update href and display a tooltip with the email
             contactButton.href = 'mailto:' + emailAddress;
             contactButton.title = emailAddress;
             
-            // Add email display on hover (optional)
-            contactButton.addEventListener('mouseover', function() {
-                this.dataset.originalText = this.textContent;
-                this.textContent = emailAddress;
-            });
-            
-            contactButton.addEventListener('mouseout', function() {
-                if (this.dataset.originalText) {
-                    this.textContent = this.dataset.originalText;
-                }
-            });
+            // Remove the event listeners that change the button text
         });
     </script>
 </body>
