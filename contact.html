@@ -93,7 +93,6 @@
             
             <div class="text-center">
                 <p class="text-xl text-gray-200">Email us at:</p>
-                <p id="dynamic-email" class="text-gray-200 text-xl my-2">contact@example.com</p>
                 <a href="mailto:contact@example.com" id="contact-button" class="email-button">CONTACT US NOW</a>
                 <p class="text-gray-400 mt-4">We typically respond to all inquiries within 24-48 hours.</p>
             </div>
@@ -131,10 +130,6 @@
             
             // Generate dynamic email address
             const emailAddress = 'contact@' + domain;
-            
-            // Update the displayed email address
-            const dynamicEmail = document.getElementById('dynamic-email');
-            dynamicEmail.textContent = emailAddress;
             
             // Set up the contact button with the correct email
             const contactButton = document.getElementById('contact-button');
